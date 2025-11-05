@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stickynotes Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      text-align: center;
+      width: 350px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+    }
+
+    .login-card h2 {
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .login-card input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .login-card input:focus {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .login-card button {
+      width: 95%;
+      padding: 12px;
+      background: linear-gradient(135deg, #00bcd4, #3f51b5);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+    }
+
+    .login-card button:hover {
+      background: linear-gradient(135deg, #2196f3, #00bcd4);
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.7);
+    }
+
+    .login-card a {
+      display: block;
+      margin-top: 15px;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .login-card a:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h2>WELCOME TO STICKY ZONE</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <a href="#">Forgot Password?</a>
+  </div>
+
+  <script>
+  // List of users with redirect links
+  const users = [
+    { username: 'admin', password: '1234', link: 'https://690ad94a5d4e76b26c8bb2ee--animated-kitsune-f3a1a8.netlify.app/' },
+    { username: 'user1', password: 'abcd', link: 'https://inspiring-cactus-72178a.netlify.app/' },
+    { username: 'guest', password: '0000', link: 'https://loquacious-halva-26b3ff.netlify.app/' },
+    { username: 'vips', password: 'tech', link: 'https://zesty-kataifi-51223c.netlify.app/' },
+    { username: 'demo', password: 'demo', link: 'https://rainbow-faloodeh-bfdc5e.netlify.app/' }
+  ];
+
+  function login() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    const user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
+      // Optional animation before redirect
+      document.querySelector('.login-container').style.opacity = '0.5';
+      document.querySelector('.login-container').style.transform = 'scale(0.95)';
+      
+      setTimeout(() => {
+        window.location.href = user.link; // Redirect to user’s specific page
+      }, 700);
+    } else {
+      alert('❌ Invalid username or password! Try again.');
+    }
+  }
+</script>
+</body>
+</html>
